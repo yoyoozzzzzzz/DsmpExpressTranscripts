@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ticket Transcript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffe6f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .container {
+      background: #fff0f5;
+      border: 2px solid #ffb6c1;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px #ffb6c1;
+    }
+
+    .message {
+      background: #ffffff;
+      border-left: 4px solid #ff69b4;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .message:hover {
+      transform: scale(1.01);
+    }
+
+    .author {
+      font-weight: bold;
+      color: #d63384;
+    }
+
+    .timestamp {
+      float: right;
+      color: #999;
+      font-size: 0.8em;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎟 Ticket Transcript</h2>
+    <div id="transcript">
+      <!-- Messages will be inserted here -->
+    </div>
+  </div>
+
+  <script>
+    // Example JSON transcript format
+    const transcript = [
+      {
+        author: "User#1234",
+        timestamp: "2025-06-25 15:42",
+        content: "Hi, I need help with my order."
+      },
+      {
+        author: "Support#0001",
+        timestamp: "2025-06-25 15:43",
+        content: "Sure! What seems to be the issue?"
+      }
+    ];
+
+    const container = document.getElementById("transcript");
+
+    transcript.forEach(msg => {
+      const div = document.createElement("div");
+      div.className = "message";
+      div.innerHTML = `
+        <div class="author">${msg.author}</div>
+        <div class="timestamp">${msg.timestamp}</div>
+        <div style="clear: both;"></div>
+        <div>${msg.content}</div>
+      `;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
