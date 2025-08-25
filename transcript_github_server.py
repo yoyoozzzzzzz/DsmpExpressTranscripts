@@ -41,8 +41,8 @@ def upload_transcript():
     resp = requests.put(api_url, json=payload, headers=headers)
     if resp.status_code in (201, 200):
         content = resp.json()["content"]
-        html_url = content["html_url"]  # blob in repo
-        raw_url = content["download_url"]  # direct raw file URL
+        html_url = content["html_url"] 
+        raw_url = content["download_url"] 
         return jsonify({"success": True, "url": raw_url, "html_url": html_url})
     else:
         try:
